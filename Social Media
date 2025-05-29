@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+#feed {
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+    <meta charset="UTF-8">
+    <title>ConnectSphere</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+</style>
+<body>
+    <h1>Welcome to ConnectSphere</h1>
+    <form id="postForm">
+        <input type="text" id="username" placeholder="Your Name">
+        <input type="text" id="postText" placeholder="What's on your mind?">
+        <button type="submit">Post</button>
+    </form>
+
+    <div id="feed"></div>
+
+    <script src="script.js">
+      document.getElementById('postForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const username = document.getElementById('username').value;
+    const postText = document.getElementById('postText').value;
+
+    const post = document.createElement('div');
+    post.innerHTML = `<strong>${username}:</strong> ${postText}`;
+    document.getElementById('feed').prepend(post);
+
+    document.getElementById('username').value = '';
+    document.getElementById('postText').value = '';
+});
+
+</script>
+</body>
+</html>
